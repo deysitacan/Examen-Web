@@ -40,6 +40,10 @@ module.exports = {
   },
 
 
+  login: function (req, res) {
+    //Redireccionar
+    return res.redirect('/homepage');
+  },
   /**
    * `UserController
    */
