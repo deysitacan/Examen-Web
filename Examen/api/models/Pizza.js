@@ -7,20 +7,18 @@
 
 
 module.exports = {
-
   attributes: {
-    ingrediente:{
-      type:'string',
+    ingredientes: {
+      type: "string"
+    },
+    precio: {
+      type: "float"
+    },
+
+    fkIdUsuario:{
+      model:'User',
       required:true
     },
-    
-    fkIdDepartamento:{
-      model:'Departamento'
-    },
-    periodosAcademicos:{
-      collection:'PeriodoAcademico',
-      via:'fkIdCarrera'
-    }
 
   }
 };
