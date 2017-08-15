@@ -16,7 +16,7 @@ module.exports = {
     return res.login({
       email: req.param('email'),
       password: req.param('password'),
-      successRedirect: '/',
+      successRedirect: '/Welcome',
       invalidRedirect: '/login'
     });
   },
@@ -27,24 +27,21 @@ module.exports = {
    */
   logout: function (req, res) {
 
-    // "Forget" the user from the session.
-    // Subsequent requests from this user agent will NOT have `req.session.me`.
+   //Usurio olvido su informacion
     req.session.me = null;
 
-    // If this is not an HTML-wanting browser, e.g. AJAX/sockets/cURL/etc.,
-    // send a simple response letting the user agent know they were logged out
-    // successfully.
+   //Desconexion exitosa
     if (req.wantsJSON) {
-      return res.ok('Logged out successfully!');
+      return res.ok('Se ha logeado con exito!');
     }
 
-    // Otherwise if this is an HTML-wanting browser, do a redirect.
+   //Redireccionar
     return res.redirect('/');
   },
 
 
   /**
-   * `UserController.signup()`
+   * `UserController
    */
   signup: function (req, res) {
 
@@ -54,23 +51,15 @@ module.exports = {
       email: req.param('email'),
       password: req.param('password')
     }, function (err, user) {
-      // res.negotiate() will determine if this is a validation error
-      // or some kind of unexpected server error, then call `res.badRequest()`
-      // or `res.serverError()` accordingly.
+      //Esy¡tablecer negociacion
       if (err) return res.negotiate(err);
 
-      // Go ahead and log this user in as well.
-      // We do this by "remembering" the user in the session.
-      // Subsequent requests from this user agent will have `req.session.me` set.
+
       req.session.me = user.id;
 
-      // If this is not an HTML-wanting browser, e.g. AJAX/sockets/cURL/etc.,
-      // send a 200 response letting the user agent know the signup was successful.
       if (req.wantsJSON) {
         return res.ok('Signup successful!');
       }
-
-      // Otherwise if this is an HTML-wanting browser, redirect to /welcome.
       return res.redirect('/welcome');
     });
   }
