@@ -29,14 +29,14 @@ module.exports = {
    * but encrypt the password first.
    *
    * @param  {Object}   inputs
-   *                     • name     {String}
+   *                     • na
+   signup: function (inputs, cb) {
+    // Create a userme     {String}
    *                     • email    {String}
    *                     • password {String}
    * @param  {Function} cb
    */
-
   signup: function (inputs, cb) {
-    // Create a user
     User.create({
       name: inputs.name,
       email: inputs.email,

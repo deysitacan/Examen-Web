@@ -16,7 +16,7 @@ module.exports = {
     return res.login({
       email: req.param('email'),
       password: req.param('password'),
-      successRedirect: '/Welcome',
+      successRedirect: '/welcome',
       invalidRedirect: '/login'
     });
   },
